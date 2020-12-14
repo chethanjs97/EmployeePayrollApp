@@ -1,16 +1,28 @@
 window.addEventListener('DOMContentLoaded',(event) => {
     const name=document.querySelector('#name');
-    const textError=document.querySelector('.text-error');
     name.addEventListener('input',function(){
         if(name.value.length == 0){
-            textError.textContent="";
-            return
+            setTextValue('.text-error', "")
+            return;
         }
         try{
             (new EmployeePayrollData()).name=name.value;
-            textError.textContent="";
+            setTextValue('.text-error',"");
         }catch(e){
-            textError.textContent=e;
+            setTextValue('.text-error',e);
+        }
+    });
+
+    const date=document.querySelector('#date');
+    date.addEventListener('input',function(){
+        let startDate = getInputValueById('#day')+" "+getInputValueById('#month')+" "+
+                    getInputValueById('#year';)
+        }
+        try{
+            (new EmployeePayrollData()).startDate = new Date(Date.parse(startDate));
+            setTextValue('.date-error',"");
+        }catch(e){
+            setTextValue('.date-error', e);
         }
     });
 
@@ -44,7 +56,7 @@ const createEmployeePayroll = () => {
     employeePayrollData.department = getSelectedValues('[name=department]');
     employeePayrollData.salary = getInputValueById('#salary');
     employeePayrollData.note = getInputValueById('#notes');
-    let date = getInputValueById(' #day ')+" "+getInputValueById('#month')+" "+getInputValueById('#year');
+    let date = getInputValueById('#day')+" "+getInputValueById('#month')+" "+getInputValueById('#year');
     employeePayrollData.date = Date.parse(date);
     alert(employeePayrollData.toString());
     return employeePayrollData;
