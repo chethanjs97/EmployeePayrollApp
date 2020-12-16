@@ -43,3 +43,13 @@ console.log(innerHtml);
         }
         return deptHtml;
     }
+
+    const remove = (node) => {
+        let empPayrollData = empPayrollList.find(empData => empData._name == node.id);
+        if (!empPayrollData) return;
+        const index = employeePayrollList.map(empData => empData._id).indexOf(empData._id);
+        employeePayrollList.splice(index, 1);
+        localStorage.setItem("EmployeePayrollList", JSON.stringify(empPayrollList));
+        document.querySelector(".emp-count").textContent = empPayrollList.length;
+        createInnerHtml();
+    }
