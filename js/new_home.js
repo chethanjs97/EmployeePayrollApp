@@ -55,6 +55,7 @@ for(const empPayrollData of empPayrollList){
         createInnerHtml();
     }
     
+    
     const update=(node)=>{
         let empPayrollData=empPayrollList.find(empData=>empData._id==node.id);
         console.log(empPayrollData);
